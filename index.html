@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Veriforce | FP&A Business Case</title>
+<style>
+  @page { size: letter portrait; margin: 0; }
+  @media print {
+    html, body { background:#fff !important; margin:0 !important; padding:0 !important; width:8.5in !important; }
+    .page { box-shadow:none !important; margin:0 !important; border-radius:0 !important; page-break-after:always; break-after:page; }
+    .page:last-child { page-break-after:avoid; break-after:avoid; }
+    .avoid-break { break-inside: avoid; page-break-inside: avoid; }
+  }
+
+  :root{
+    --navy:#0f2239;
+    --navy2:#184a78;
+    --blue:#214968;
+    --blue-100:#edf4f8;
+    --blue-150:#e4eef4;
+    --green:#184837;
+    --green-2:#2f7259;
+    --green-100:#eef7f2;
+    --green-150:#e2efe8;
+    --green-200:#d1e4da;
+    --gold:#7b5b19;
+    --gold-100:#fbf5e8;
+    --gold-150:#f5ecd6;
+    --ink:#18252e;
+    --muted:#61717d;
+    --line:#d9e2e8;
+    --soft:#f6f9fb;
+    --soft-2:#fbfcfd;
+    --white:#ffffff;
+    --radius-lg:18px;
+    --radius-md:12px;
+    --shadow:0 12px 30px rgba(24,37,46,.08);
+  }
+
+  * { box-sizing:border-box; }
+  body{
+    margin:0;
+    padding:24px 0;
+    background:#dfe6ea;
+    color:var(--ink);
+    font-family:"Segoe UI", Inter, Arial, sans-serif;
+    line-height:1.5;
+  }
+  .page{
+    width:8.5in;
+    min-height:11in;
+    margin:0 auto 22px auto;
+    padding:.44in .56in .6in .56in;
+    background:var(--white);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--green);
+    margin-bottom:12px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand-pill{
+    background:var(--green);
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border-radius:999px;
+    padding:5px 10px;
+  }
+  .brand-tag,.page-num{
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .footer{
+    position:absolute;
+    left:.56in;
+    right:.56in;
+    bottom:.24in;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--line);
+    padding-top:6px;
+    font-size:10px;
+    color:var(--muted);
+  }
+  .footer strong{ color:var(--green); }
+
+  .hero{
+    display:grid;
+    grid-template-columns:1.28fr .92fr;
+    gap:14px;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .eyebrow{
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.78);
+    margin-bottom:6px;
+    font-weight:800;
+  }
+  h1{
+    margin:0 0 7px 0;
+    font-size:24px;
+    line-height:1.08;
+    letter-spacing:-.03em;
+    font-weight:800;
+  }
+  .hero p{
+    margin:0;
+    font-size:13.2px;
+    line-height:1.5;
+    color:rgba(255,255,255,.94);
+  }
+  .hero-note{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--radius-md);
+    padding:12px 13px;
+  }
+  .hero-note h3{ margin:0 0 6px 0; font-size:14px; color:#fff; font-weight:800; }
+  .hero-note ul{ margin:0; padding:0; list-style:none; }
+  .hero-note li{
+    position:relative;
+    padding-left:14px;
+    margin-bottom:6px;
+    font-size:12.3px;
+    color:rgba(255,255,255,.91);
+  }
+  .hero-note li:last-child{ margin-bottom:0; }
+  .hero-note li::before{ content:"•"; position:absolute; left:0; color:#a9d8be; font-weight:900; }
+
+  .metric-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .metric{
+    background:linear-gradient(180deg, #fff 0%, #f8fbfd 100%);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:12px;
+  }
+  .metric .label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--muted);
+    font-weight:800;
+    margin-bottom:8px;
+  }
+  .metric .value{
+    font-size:24px;
+    line-height:1.04;
+    color:var(--blue);
+    font-weight:800;
+    letter-spacing:-.03em;
+    margin-bottom:5px;
+  }
+  .metric p{ margin:0; font-size:11.3px; line-height:1.38; color:#334350; }
+
+  .intro-grid{
+    display:grid;
+    grid-template-columns:1.08fr .92fr;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .statement{
+    border-radius:var(--radius-md);
+    padding:14px 15px;
+    border:1px solid var(--green-200);
+    background:linear-gradient(180deg, var(--green-100) 0%, var(--green-150) 100%);
+  }
+  .statement.blue{
+    border-color:#d5e3eb;
+    background:linear-gradient(180deg, #f3f8fb 0%, var(--blue-100) 100%);
+  }
+  .label-pill{
+    display:inline-block;
+    margin-bottom:8px;
+    padding:4px 8px;
+    border-radius:999px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:800;
+  }
+  .statement .label-pill{ background:#d7eadf; color:var(--green); }
+  .statement.blue .label-pill{ background:#dde9f2; color:var(--blue); }
+  .statement h2{
+    margin:0 0 7px 0;
+    font-size:22px;
+    line-height:1.12;
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  .statement p{ margin:0; font-size:12.9px; line-height:1.52; color:#2d404b; }
+
+  .section-head{ display:flex; align-items:center; gap:8px; margin:12px 0 7px 0; }
+  .num{
+    width:22px; height:22px; border-radius:999px; background:var(--green); color:#fff;
+    display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;
+  }
+  .section-title{ font-size:21px; line-height:1.18; letter-spacing:-.02em; color:var(--green); font-weight:800; }
+  .subhead{ margin:-1px 0 9px 30px; font-size:12.5px; color:var(--muted); }
+
+  .three-col{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px; }
+  .panel{ border:1px solid var(--line); border-radius:var(--radius-md); background:#fff; padding:12px 13px; }
+  .panel h3{ margin:0 0 7px 0; font-size:14px; color:var(--ink); font-weight:800; }
+  .panel ul{ margin:0; padding:0; list-style:none; }
+  .panel li{ position:relative; padding-left:14px; margin-bottom:6px; font-size:12.4px; line-height:1.42; color:#32434f; }
+  .panel li:last-child{ margin-bottom:0; }
+  .panel li::before{ content:"•"; position:absolute; left:0; color:var(--green-2); font-weight:900; }
+
+  .value-table{ border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; margin-bottom:12px; }
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  thead th{
+    background:linear-gradient(180deg, #eff4f7 0%, #e7eef3 100%);
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    text-align:left;
+    font-weight:800;
+    padding:10px 11px;
+    border-bottom:1px solid var(--line);
+  }
+  tbody td{ padding:10px 11px; border-bottom:1px solid var(--line); vertical-align:top; font-size:12.4px; line-height:1.42; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:nth-child(even) td{ background:#fbfcfd; }
+  td.money{ white-space:nowrap; font-weight:800; color:var(--green); }
+
+  .split{ display:grid; grid-template-columns:1fr .95fr; gap:12px; margin-bottom:12px; }
+  .callout{
+    border-radius:var(--radius-md);
+    padding:12px 13px;
+    border:1px solid var(--green-200);
+    background:linear-gradient(180deg, #eef6f1 0%, #e3efe8 100%);
+  }
+  .callout.alt{
+    border-color:#e5dcc2;
+    background:linear-gradient(180deg, var(--gold-100) 0%, var(--gold-150) 100%);
+  }
+  .callout h3{ margin:0 0 6px 0; font-size:14px; color:var(--ink); font-weight:800; }
+  .callout p,.callout li{ margin:0; font-size:12.3px; line-height:1.45; color:#32434f; }
+  .callout ul{ list-style:none; padding:0; margin:0; }
+  .callout li{ position:relative; padding-left:14px; margin-bottom:6px; }
+  .callout li:last-child{ margin-bottom:0; }
+  .callout li::before{ content:"•"; position:absolute; left:0; color:var(--green-2); font-weight:900; }
+
+  .explain-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px; }
+  .explain{
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    background:linear-gradient(180deg, #fff 0%, #f9fbfc 100%);
+    padding:12px 13px;
+  }
+  .explain h3{ margin:0 0 6px 0; font-size:14px; color:var(--ink); font-weight:800; }
+  .explain p{ margin:0; font-size:12.3px; line-height:1.45; color:#334350; }
+
+  .benchmark-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:12px; }
+  .benchmark{
+    background:linear-gradient(180deg, #f4f8fa 0%, #ecf2f5 100%);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:11px 12px;
+  }
+  .benchmark .label{ display:block; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:#597082; font-weight:800; margin-bottom:4px; }
+  .benchmark .value{ display:block; font-size:18px; line-height:1.04; font-weight:800; color:var(--blue); margin-bottom:3px; }
+  .benchmark p{ margin:0; font-size:11.3px; line-height:1.38; color:#334350; }
+
+  .phase-grid{ display:grid; grid-template-columns:1fr .1fr 1fr; gap:12px; align-items:stretch; margin-bottom:12px; }
+  .phase{ border:1px solid var(--line); border-radius:var(--radius-md); background:#fff; padding:13px 14px; }
+  .phase.primary{ background:linear-gradient(180deg, var(--green-100) 0%, var(--green-150) 100%); border-color:var(--green-200); }
+  .phase.secondary{ background:linear-gradient(180deg, #f8fafb 0%, #f0f5f8 100%); }
+  .phase-tag{
+    display:inline-block;
+    margin-bottom:8px;
+    padding:4px 8px;
+    border-radius:999px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:800;
+    background:#d7eadf;
+    color:var(--green);
+  }
+  .phase.secondary .phase-tag{ background:#e3ecf2; color:var(--blue); }
+  .phase h3{ margin:0 0 7px 0; font-size:17px; color:var(--ink); font-weight:800; }
+  .phase ul{ margin:0; padding:0; list-style:none; }
+  .phase li{ position:relative; padding-left:14px; margin-bottom:6px; font-size:12.4px; line-height:1.42; color:#32434f; }
+  .phase li:last-child{ margin-bottom:0; }
+  .phase li::before{ content:"•"; position:absolute; left:0; color:var(--green-2); font-weight:900; }
+  .arrow{ display:flex; align-items:center; justify-content:center; font-size:28px; color:var(--green-2); font-weight:800; }
+
+  .six-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:12px; }
+  .mini{ border:1px solid var(--line); border-radius:var(--radius-md); background:#fff; padding:12px 12px; }
+  .mini h3{ margin:0 0 6px 0; font-size:13px; color:var(--ink); font-weight:800; }
+  .mini p{ margin:0; font-size:11.8px; line-height:1.44; color:#334350; }
+
+  .vendor-intro{
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    background:linear-gradient(180deg, #f7fafb 0%, #eef4f7 100%);
+    padding:12px 14px;
+    margin-bottom:12px;
+  }
+  .vendor-intro p{ margin:0; font-size:12.6px; line-height:1.5; color:#32434f; }
+
+  .vendor-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .vendor-card{
+    border:2px solid var(--line);
+    border-radius:16px;
+    background:#fff;
+    overflow:hidden;
+  }
+  .vendor-head{
+    padding:14px 15px 12px 15px;
+    border-bottom:1px solid var(--line);
+  }
+  .vendor-head h3{
+    margin:0 0 5px 0;
+    font-size:26px;
+    line-height:1.0;
+    letter-spacing:-.02em;
+    font-weight:800;
+  }
+  .vendor-head p{ margin:0; font-size:12.4px; line-height:1.45; color:#40525f; }
+  .vendor-card .vendor-body{ padding:13px 15px 14px 15px; }
+  .vendor-card .block{ padding:10px 0; border-top:1px solid var(--line); }
+  .vendor-card .block:first-child{ padding-top:0; border-top:none; }
+  .vendor-card .block:last-child{ padding-bottom:0; }
+  .vendor-card .block h4{ margin:0 0 6px 0; font-size:13px; color:var(--ink); font-weight:800; }
+  .vendor-card ul{ margin:0; padding:0; list-style:none; }
+  .vendor-card li{ position:relative; padding-left:14px; margin-bottom:6px; font-size:12.2px; line-height:1.42; color:#334350; }
+  .vendor-card li:last-child{ margin-bottom:0; }
+  .vendor-card li::before{ content:"•"; position:absolute; left:0; color:var(--green-2); font-weight:900; }
+  .vendor-card.anaplan{ border-color:#d7dde6; }
+  .vendor-card.anaplan .vendor-head{ background:linear-gradient(180deg, #f8fafc 0%, #eef3f7 100%); }
+  .vendor-card.anaplan h3{ color:#20334b; }
+  .vendor-card.onestream{ border-color:#dfe3d6; }
+  .vendor-card.onestream .vendor-head{ background:linear-gradient(180deg, #f9faf7 0%, #eef3e8 100%); }
+  .vendor-card.onestream h3{ color:#355338; }
+  .vendor-card.adaptive{ border-color:#e4dbc7; }
+  .vendor-card.adaptive .vendor-head{ background:linear-gradient(180deg, #fcfaf4 0%, #f3ecdc 100%); }
+  .vendor-card.adaptive h3{ color:#6c5420; }
+  .vendor-card.vena{ border-color:#bdd8c7; box-shadow:0 10px 24px rgba(24,72,55,.08); }
+  .vendor-card.vena .vendor-head{ background:linear-gradient(135deg, var(--green) 0%, var(--green-2) 100%); }
+  .vendor-card.vena h3, .vendor-card.vena .vendor-head p{ color:#fff; }
+  .vendor-card.vena .vendor-head .mini-pill{ background:rgba(255,255,255,.14); color:#d6edde; }
+  .mini-pill{
+    display:inline-block;
+    margin-bottom:8px;
+    padding:4px 8px;
+    border-radius:999px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:800;
+    background:#eaf0f4;
+    color:#40525f;
+  }
+
+  .bottom-line{
+    background:linear-gradient(180deg, #183f31 0%, #123327 100%);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:15px 17px;
+  }
+  .bottom-line .small{ font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:#a8d8bc; font-weight:800; margin-bottom:5px; }
+  .bottom-line h2{ margin:0 0 6px 0; font-size:21px; line-height:1.18; letter-spacing:-.02em; }
+  .bottom-line p{ margin:0; font-size:13px; line-height:1.55; color:rgba(255,255,255,.93); }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header">
+    <div class="brand">
+      <span class="brand-pill">Vena</span>
+      <span class="brand-tag">Veriforce internal business case</span>
+    </div>
+    <span class="page-num">Page 1 of 4</span>
+  </div>
+
+  <section class="hero avoid-break">
+    <div>
+      <div class="eyebrow">FP&amp;A business case</div>
+      <h1>Why this makes sense to address now</h1>
+      <p>The current finance process is getting more structured, but budgeting, forecasting, management reporting, and leadership support still depend too heavily on large Excel models, manual refreshes, local inputs, and finance manually stitching the process together. As acquisitions, entity changes, and NetSuite rollout continue, the risk is not just inefficiency. It is slower answers, more room for human error, weaker accountability, and a process that is not scaling at the same pace as the business.</p>
+    </div>
+    <div class="hero-note">
+      <h3>Recommended sequencing</h3>
+      <ul>
+        <li>Start with FP&amp;A first: management reporting, forecast support, budget workflow, and ad hoc analysis.</li>
+        <li>Use that foundation to improve the process ahead of Budget 27.</li>
+        <li>Expand into broader accounting, close, and consolidation support after the core FP&amp;A process is in place.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="metric-grid avoid-break">
+    <div class="metric">
+      <div class="label">Estimated annual hours returned</div>
+      <div class="value">1,000+</div>
+      <p>Time that can move away from report prep, manual refreshes, rework, file management, and forecast administration into analysis and decision support.</p>
+    </div>
+    <div class="metric">
+      <div class="label">Direct annual value</div>
+      <div class="value">$95K+</div>
+      <p>Conservative estimate tied to time returned from reporting, forecast support, ad hoc work, and template maintenance.</p>
+    </div>
+    <div class="metric">
+      <div class="label">Base-case annual value</div>
+      <div class="value">$215K+</div>
+      <p>Direct value plus faster decisions and earlier visibility when spend, hiring, revenue, or regional performance drifts away from plan.</p>
+    </div>
+    <div class="metric">
+      <div class="label">Illustrative revenue impact</div>
+      <div class="value">$200K+</div>
+      <p>Even a very small basis-point improvement can matter at the scale this business is operating today.</p>
+    </div>
+  </section>
+
+  <section class="intro-grid avoid-break">
+    <div class="statement">
+      <span class="label-pill">Problem statement</span>
+      <h2>The immediate pain is FP&amp;A.</h2>
+      <p>NetSuite is becoming the actuals system and Fabric is becoming the data backbone, but management reporting, forecasting, budget inputs, and analysis still sit in large workbooks, manual mappings, custom formulas, and one-off logic. The result is a process that works, but takes too much effort to maintain, is harder to trust than it should be, and does not give leadership answers as quickly as the business needs.</p>
+    </div>
+    <div class="statement blue">
+      <span class="label-pill">Why now</span>
+      <h2>The business is scaling faster than the process.</h2>
+      <p>Budget 27 design work is starting now. Acquisitions continue to add entities, systems, and mapping complexity. The broader value-creation plan depends on stronger reporting, cleaner data, and more confidence in the numbers. A scalable FP&amp;A foundation improves current operations and also supports valuation readiness, buyer diligence, and a cleaner long-term finance story.</p>
+    </div>
+  </section>
+
+  <div class="section-head"><span class="num">1</span><span class="section-title">What is getting in the way today</span></div>
+  <div class="subhead">This is not an Excel problem by itself. It is a process, data quality, and scale problem.</div>
+
+  <section class="three-col avoid-break">
+    <div class="panel">
+      <h3>Current friction</h3>
+      <ul>
+        <li>Budgeting and forecasting are still handled in Excel while NetSuite is mostly actuals.</li>
+        <li>Management reporting still depends on large workbooks, manual refreshes, and custom logic.</li>
+        <li>Not every entity is fully standardized, so some subsidiaries still need manual inputs and local workarounds.</li>
+        <li>Intercompany activity, multiple entities, multiple currencies, and acquisitions add more moving parts every cycle.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>What that causes</h3>
+      <ul>
+        <li>Too much time goes into building, fixing, and reconciling reports instead of analyzing what changed.</li>
+        <li>Ad hoc requests can still take days when leadership needs answers quickly.</li>
+        <li>Data quality depends too much on manual formulas, local mappings, and who last touched the file.</li>
+        <li>Finance is still handholding the process more than running a repeatable system with shared accountability.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Why leadership should care</h3>
+      <ul>
+        <li>The business is growing through acquisition and international expansion, so finance needs to scale with it.</li>
+        <li>Cleaner reporting, faster follow-up, and stronger data hygiene support better decisions on spend, hiring, and resource allocation.</li>
+        <li>Consistent reporting and cleaner diligence support a stronger valuation story over time.</li>
+        <li>The longer the current process remains in place, the more rework and inconsistency compounds.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer"><strong>Vena Solutions</strong><span>Veriforce internal business case · 2026</span></div>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div class="brand">
+      <span class="brand-pill">Vena</span>
+      <span class="brand-tag">Veriforce internal business case</span>
+    </div>
+    <span class="page-num">Page 2 of 4</span>
+  </div>
+
+  <div class="section-head"><span class="num">2</span><span class="section-title">Where the value comes from</span></div>
+  <div class="subhead">The first win here is practical: less manual work, cleaner accountability, faster answers, and a stronger operating model for finance.</div>
+
+  <div class="value-table avoid-break">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:18%;">Value source</th>
+          <th style="width:15%;">Annual value</th>
+          <th style="width:29%;">What changes</th>
+          <th style="width:38%;">Why this is reasonable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Direct productivity returned</strong></td>
+          <td class="money">$95K</td>
+          <td>Less time spent on management reporting, actuals refresh, forecast support, ad hoc requests, template maintenance, and entity-level mapping work.</td>
+          <td>Built from a conservative range of roughly 1,050 annual hours returned across finance at a blended loaded rate of about $90 per hour.</td>
+        </tr>
+        <tr>
+          <td><strong>Faster decisions and stronger support</strong></td>
+          <td class="money">$120K</td>
+          <td>Finance can turn around leadership questions faster on spend, hiring, regional performance, forecast changes, and resource allocation.</td>
+          <td>Modeled as 8 moments during the year at roughly $15K each. The point is not hard savings. The point is faster, better-supported decisions when timing matters.</td>
+        </tr>
+        <tr>
+          <td><strong>Base-case annual value</strong></td>
+          <td class="money">$215K</td>
+          <td>Direct value plus better decision support, without putting an aggressive number on broader revenue or margin improvement.</td>
+          <td>This is the cleanest case to start with because it stays close to the current-state pain already showing up in the process.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="split avoid-break">
+    <div class="callout">
+      <h3>What is included in the direct value</h3>
+      <ul>
+        <li>Management reporting and month-end pack preparation</li>
+        <li>Actuals refresh and template maintenance</li>
+        <li>Manual consolidation support and entity mapping work</li>
+        <li>Ad hoc analysis, board support, and leadership follow-up</li>
+        <li>Forecast and budget administration that still sits in spreadsheets today</li>
+      </ul>
+    </div>
+    <div class="callout alt">
+      <h3>Why this matters beyond time savings</h3>
+      <ul>
+        <li>Leadership gets answers faster when assumptions move.</li>
+        <li>Finance spends less time proving the number and more time explaining it.</li>
+        <li>Shared accountability improves because inputs, approvals, denials, and revisions are visible in one process.</li>
+        <li>Data quality improves because the process depends less on manual formulas, local files, and one-off mappings.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-head"><span class="num">3</span><span class="section-title">Why earlier visibility can be worth real money</span></div>
+  <div class="subhead">This is not saying software creates revenue on its own. It is showing why faster visibility and faster action can matter at the scale this business is operating.</div>
+
+  <div class="value-table avoid-break">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:28%;">Illustrative revenue base</th>
+          <th style="width:24%;">0.10%</th>
+          <th style="width:24%;">0.15%</th>
+          <th style="width:24%;">0.25%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>$200,000,000</strong></td>
+          <td class="money">$200,000</td>
+          <td class="money">$300,000</td>
+          <td class="money">$500,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="explain-grid avoid-break">
+    <div class="explain">
+      <h3>How to read this</h3>
+      <p>For illustration, assume revenue is roughly in the middle of a $100M to $300M range, or about $200M. A 10-basis-point improvement is 0.10% of revenue, which equals $200K. Fifteen basis points equals $300K. Twenty-five basis points equals $500K.</p>
+    </div>
+    <div class="explain">
+      <h3>What can create the movement</h3>
+      <p>The value comes from catching issues sooner and responding sooner on hiring pace, discretionary spend, billing and revenue assumptions, regional performance, acquisition integration, and resource allocation. Faster visibility changes the timing of the decision.</p>
+    </div>
+    <div class="explain">
+      <h3>Why timing matters</h3>
+      <p>If a forecast issue, margin problem, or reporting inconsistency is surfaced a month earlier, the business has more room to react. That can mean slowing spend sooner, adjusting headcount sooner, tightening assumptions sooner, or escalating a regional issue before it gets larger.</p>
+    </div>
+  </section>
+
+  <section class="benchmark-grid avoid-break">
+    <div class="benchmark">
+      <span class="label">Hiring and spend</span>
+      <span class="value">Earlier control</span>
+      <p>Better forecast support can improve the timing of hiring approvals, spend pacing, and local budget decisions across the business.</p>
+    </div>
+    <div class="benchmark">
+      <span class="label">Revenue and margin</span>
+      <span class="value">Earlier course correction</span>
+      <p>Cleaner reporting and drilldown can help spot drift sooner in billing, renewals, pricing, regional performance, or cost structure.</p>
+    </div>
+    <div class="benchmark">
+      <span class="label">Acquisitions and integration</span>
+      <span class="value">Faster standardization</span>
+      <p>Cleaner mappings and more consistent reporting can shorten the time it takes for new entities to become usable in the broader finance process.</p>
+    </div>
+  </section>
+
+  <div class="footer"><strong>Vena Solutions</strong><span>Veriforce internal business case · 2026</span></div>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div class="brand">
+      <span class="brand-pill">Vena</span>
+      <span class="brand-tag">Veriforce internal business case</span>
+    </div>
+    <span class="page-num">Page 3 of 4</span>
+  </div>
+
+  <div class="section-head"><span class="num">4</span><span class="section-title">What the first implementation should focus on</span></div>
+  <div class="subhead">The best first phase solves the FP&amp;A problem in front of the team now, then leaves room to expand into broader accounting and consolidation support.</div>
+
+  <section class="phase-grid avoid-break">
+    <div class="phase primary">
+      <span class="phase-tag">Phase 1</span>
+      <h3>FP&amp;A foundation</h3>
+      <ul>
+        <li>Management reporting and standardized regional views</li>
+        <li>NetSuite and Fabric-fed actuals into one finance model</li>
+        <li>Forecast support and a cleaner monthly or quarterly reforecast workflow</li>
+        <li>Budget templates, submissions, approvals, denials, and version control</li>
+        <li>Multi-entity and multi-currency reporting with faster drilldown</li>
+        <li>Ad hoc analysis and leadership support off the same model</li>
+      </ul>
+    </div>
+    <div class="arrow">→</div>
+    <div class="phase secondary">
+      <span class="phase-tag">Phase 2</span>
+      <h3>Broader finance and accounting</h3>
+      <ul>
+        <li>Expanded consolidation support across multiple ERPs and entities</li>
+        <li>Intercompany and elimination views</li>
+        <li>Balance sheet and cash flow reporting</li>
+        <li>Close task visibility, account reconciliation, and month-end support</li>
+        <li>More advanced revenue planning and scenario modeling</li>
+        <li>Additional entity onboarding as more of the business matures in NetSuite</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-head"><span class="num">5</span><span class="section-title">What Vena changes in practice</span></div>
+  <div class="subhead">Practically, this is how the day-to-day work gets easier and more scalable.</div>
+
+  <section class="six-grid avoid-break">
+    <div class="mini">
+      <h3>One refreshable finance model</h3>
+      <p>Actuals can flow into one model instead of being pulled, reformatted, and pushed through separate files every cycle.</p>
+    </div>
+    <div class="mini">
+      <h3>Cleaner reporting by region and currency</h3>
+      <p>Switching by entity, region, or currency can happen inside the same structure instead of maintaining separate versions.</p>
+    </div>
+    <div class="mini">
+      <h3>Better workflow accountability</h3>
+      <p>Submissions, approvals, denials, and revisions can move into one controlled process instead of email, SharePoint, and file chasing.</p>
+    </div>
+    <div class="mini">
+      <h3>Faster drilldown and follow-up</h3>
+      <p>Leadership can move from summary to detail faster, which improves confidence in the numbers and shortens turnaround.</p>
+    </div>
+    <div class="mini">
+      <h3>Stronger support for acquisitions</h3>
+      <p>New entities and new mappings can be brought into one finance process more consistently instead of relying on manual bridge files.</p>
+    </div>
+    <div class="mini">
+      <h3>Better base for AI</h3>
+      <p>AI is only useful when the model underneath it is clean, current, and governed. Vena helps create that base for safer, more practical AI use.</p>
+    </div>
+  </section>
+
+  <section class="split avoid-break">
+    <div class="callout">
+      <h3>Why this lines up with current success criteria</h3>
+      <ul>
+        <li>Flexibility matters because the process is still evolving and the business continues to change.</li>
+        <li>Change management matters because broad adoption is easier in a familiar environment.</li>
+        <li>Finance ownership matters because the process should not become dependent on outside specialists for every change.</li>
+      </ul>
+    </div>
+    <div class="callout alt">
+      <h3>What should be measured after go-live</h3>
+      <ul>
+        <li>Reporting turnaround time</li>
+        <li>Ad hoc response time</li>
+        <li>Number of manual files still in the process</li>
+        <li>Forecast cadence and cycle time</li>
+        <li>Consistency of regional reporting and commentary</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="benchmark-grid avoid-break">
+    <div class="benchmark">
+      <span class="label">Reporting benchmark</span>
+      <span class="value">66% faster</span>
+      <p>Lookout reported materially faster reporting with Vena.</p>
+    </div>
+    <div class="benchmark">
+      <span class="label">Planning turnaround</span>
+      <span class="value">6 wks → 10 days</span>
+      <p>iPSL cut budget and forecast report turnaround dramatically.</p>
+    </div>
+    <div class="benchmark">
+      <span class="label">Adoption benchmark</span>
+      <span class="value">100% adoption</span>
+      <p>Turner Enterprises rolled Vena out to 57 users with full adoption.</p>
+    </div>
+  </section>
+
+  <div class="footer"><strong>Vena Solutions</strong><span>Veriforce internal business case · 2026</span></div>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div class="brand">
+      <span class="brand-pill">Vena</span>
+      <span class="brand-tag">Veriforce internal business case</span>
+    </div>
+    <span class="page-num">Page 4 of 4</span>
+  </div>
+
+  <div class="section-head"><span class="num">6</span><span class="section-title">How the main options compare</span></div>
+  <div class="subhead">The best answer is not the platform with the longest feature list. It is the platform that best matches the immediate problem, the pace of change, and the way finance already works.</div>
+
+  <section class="vendor-intro avoid-break">
+    <p>The immediate need is not a giant transformation across every finance process at once. The immediate need is a cleaner FP&amp;A process: better management reporting, better forecast support, stronger workflow accountability, lower dependence on fragile spreadsheets, and a platform that can still grow into broader finance and accounting use cases later.</p>
+  </section>
+
+  <section class="vendor-grid avoid-break">
+    <div class="vendor-card anaplan">
+      <div class="vendor-head">
+        <span class="mini-pill">Enterprise planning</span>
+        <h3><strong>Anaplan</strong></h3>
+        <p>Known for large-scale planning across finance, supply chain, sales, and workforce.</p>
+      </div>
+      <div class="vendor-body">
+        <div class="block">
+          <h4>Where it is strong</h4>
+          <ul>
+            <li>Cross-functional planning across multiple business areas</li>
+            <li>Large scenario modeling environments</li>
+            <li>Organizations standardizing many planning processes in one enterprise platform</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>What creates friction here</h4>
+          <ul>
+            <li>It typically asks finance to work in a more specialized modeling environment instead of staying in Excel.</li>
+            <li>That often means a steeper learning curve, more dedicated admin ownership, and more outside consulting support.</li>
+            <li>For an FP&amp;A-first rollout, it can introduce more change, more cost, and more maintenance than this phase actually needs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="vendor-card onestream">
+      <div class="vendor-head">
+        <span class="mini-pill">Close and consolidation</span>
+        <h3><strong>OneStream</strong></h3>
+        <p>Strongest when close, consolidation, intercompany, and controller-led finance processes are driving the project.</p>
+      </div>
+      <div class="vendor-body">
+        <div class="block">
+          <h4>Where it is strong</h4>
+          <ul>
+            <li>Financial close and consolidation</li>
+            <li>Intercompany, eliminations, and accounting-heavy use cases</li>
+            <li>Organizations leading with controller and close priorities first</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>What creates friction here</h4>
+          <ul>
+            <li>It is a heavier platform to stand up and often brings more IT, admin, and consulting involvement.</li>
+            <li>FP&amp;A can become secondary when the immediate need is reporting, forecast support, and business analysis.</li>
+            <li>That makes it a stronger fit when close and consolidation are the starting point, not when FP&amp;A is the first problem to solve.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="vendor-card adaptive">
+      <div class="vendor-head">
+        <span class="mini-pill">Web-based planning</span>
+        <h3><strong>Adaptive</strong></h3>
+        <p>Well known for budgeting and planning, especially in organizations already centered around Workday.</p>
+      </div>
+      <div class="vendor-body">
+        <div class="block">
+          <h4>Where it is strong</h4>
+          <ul>
+            <li>Core budgeting, forecasting, and operational planning</li>
+            <li>Organizations that want a web-based planning experience</li>
+            <li>Teams already aligned to the Workday ecosystem</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>What creates friction here</h4>
+          <ul>
+            <li>The planning experience still lives in a web-based system, which can create more change-management friction for an Excel-heavy finance team.</li>
+            <li>Many teams still end up back in Excel for flexibility, detailed analysis, and unique reporting needs.</li>
+            <li>That creates the risk of running the system and spreadsheets in parallel instead of truly simplifying ownership and adoption.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="vendor-card vena">
+      <div class="vendor-head">
+        <span class="mini-pill">Recommended fit</span>
+        <h3><strong>Vena</strong></h3>
+        <p>Excel-native FP&amp;A platform built to fit a Microsoft, NetSuite, and phased-rollout environment.</p>
+      </div>
+      <div class="vendor-body">
+        <div class="block">
+          <h4>Why it stands out</h4>
+          <ul>
+            <li>Users stay in a familiar Excel environment instead of having to learn an entirely new system.</li>
+            <li>That lowers adoption friction for finance and contributors, which matters in a team already working in Excel, Teams, and Power BI.</li>
+            <li>It fits the broader Microsoft direction already in place while also integrating with NetSuite, Fabric, Salesforce, and other source systems.</li>
+            <li>It is one unified platform for reporting, planning, workflows, and analysis rather than a collection of separate tools.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>What it would do in practice</h4>
+          <ul>
+            <li>Create one finance-owned model for actuals, management reporting, forecasts, budgets, and ad hoc analysis</li>
+            <li>Improve refresh speed, drilldown, and confidence in the numbers</li>
+            <li>Reduce dependence on spreadsheet workarounds, local files, and manual follow-up</li>
+            <li>Provide a practical first phase for FP&amp;A now, with room to expand into close, consolidation, and broader finance later</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bottom-line avoid-break">
+    <div class="small">Bottom line</div>
+    <h2>Vena is the strongest fit for what needs to be solved first.</h2>
+    <p>The strongest answer is not the heaviest platform. It is the platform that improves reporting, forecasting, workflow accountability, and decision support now while fitting the way the team already works. Vena stands out because it keeps users in a familiar Excel environment, fits the Microsoft and NetSuite direction already underway, and gives finance a practical way to improve the process now without taking on unnecessary complexity in phase one.</p>
+  </section>
+
+  <div class="footer"><strong>Vena Solutions</strong><span>Veriforce internal business case · 2026</span></div>
+</div>
+
+</body>
+</html>
